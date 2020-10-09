@@ -1,0 +1,101 @@
+thermo_log	./Thermos/thermo_botgen
+
+atom_style	granular
+atom_modify	map array
+communicate	single vel yes
+hard_particles	yes
+#processors	6 1 1
+
+boundary	f p f
+newton		off
+
+units		si
+
+region		reg block 0.26 0.7 0. 0.043 0. 0.2174 units box
+create_box	3 reg
+Created orthogonal box = (0.26 0 0) to (0.7 0.043 0.2174)
+  1 by 1 by 1 MPI processor grid
+
+neighbor	0.005 bin
+neigh_modify	delay 0
+
+# Material properties required for granular pair styles
+#type1== base sand type2== sand layer type3== wall
+
+fix         m1 all property/global youngsModulus peratomtype 4.6e7 4.6e7 4.6e7
+fix         m2 all property/global poissonsRatio peratomtype 0.167 0.167 0.167
+fix         m3 all property/global coefficientRestitution peratomtypepair 3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3
+fix         m4 all property/global coefficientFriction peratomtypepair 3 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+
+# pair style
+pair_style  gran model hertz tangential history
+pair_coeff  * *
+
+# timestep, gravity
+timestep    1e-5
+
+# Groups
+group		sand type 2
+0 atoms in group sand
+group		bot type 1
+0 atoms in group bot
+group 		wall type 3
+0 atoms in group wall
+
+# Mesh velocity
+variable 	mvel equal "0.275*sin(2*3.14159*50*step*dt)"
+
+# Walls
+fix             xwal1 all wall/gran model hertz tangential history primitive type 2 xplane 0.26
+fix             xwal2 all wall/gran model hertz tangential history primitive type 2 xplane 0.7
+fix		zwal2 all mesh/surface file cad/holder.stl type 2
+fix		zwal3 all mesh/surface file cad/bottom.stl type 2 surface_vel v_mvel 0. 0.
+fix		holder all wall/gran model hertz tangential history mesh n_meshes 2 meshes zwal2 zwal3
+
+# Particle templates
+fix             pts1 all particletemplate/sphere 13451 atom_type 1 density constant 2650 radius constant 1.5e-3
+fix             pts2 all particletemplate/sphere 29411 atom_type 1 density constant 2650 radius constant 2.0e-3
+fix             pts3 all particletemplate/sphere 29423 atom_type 1 density constant 2650 radius constant 2.5e-3
+fix             pts4 all particletemplate/sphere 50021 atom_type 1 density constant 2650 radius constant 3.0e-3
+fix             pts5 all particletemplate/sphere 50023 atom_type 1 density constant 2650 radius constant 3.5e-3
+#fix             pts6 all particletemplate/sphere 50033 atom_type 1 density constant 2650 radius constant 1.16e-3
+#fix             pts7 all particletemplate/sphere 50047 atom_type 1 density constant 2650 radius constant 1.28e-3
+fix             pdd1 all particledistribution/discrete 15485867 5 pts1 0.21 pts2 0.17 pts3 0.19 pts4 0.18 pts5 0.25
+#fix		pdd2 all particledistribution/discrete 50033 2 pts1 0.5 pts5 0.5
+
+# Regions
+region		lreg block 0.26 0.5217 0. 0.026 0.04348 0.2174
+region		mreg block 0.5217 0.526 0. 0.026 0. 0.02174
+region		rreg block 0.526 0.7 0. 0.026 0.04348 0.2174
+
+fix		gravi bot gravity 225 vector 0. 0. -1.
+
+# insert the base layer
+fix		ins1 bot insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.38
+
+#fix		ins2 bot insert/pack seed 12007 distributiontemplate pdd2 maxattempt 1000 overlapcheck yes all_in yes insert_every once region mreg volumefraction_region 0.31
+
+fix		ins3 bot insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.38
+
+# apply integrators
+fix		int1 bot nve/sphere
+
+# Define variables
+variable	shakets equal "15/dt"
+variable	relaxts equal "1/dt"
+variable 	dmpst equal "(v_shakets+v_relaxts)/200"
+variable	resstep equal "(v_shakets+v_relaxts)/50"
+
+# Define computes
+compute		cord all contact/atom
+compute		centerOM all com
+
+# Screen output
+thermo_style	custom step atoms ke cpu c_centerOM[3] v_mvel
+thermo		1000
+thermo_modify	lost ignore norm no
+
+# Insert particles
+run		1
+Setting up run at Fri Oct  9 06:07:07 2020
+

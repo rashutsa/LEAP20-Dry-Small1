@@ -1,0 +1,123 @@
+# Generate the packing for LEAP2020 project
+
+echo		both
+log		./Logs/log.sandgen
+thermo_log	./Thermos/thermo_sandgen
+
+atom_style	granular
+atom_modify	map array
+communicate	single vel yes
+hard_particles	yes
+processors	4 1 3 
+
+boundary	f p f
+newton		off
+
+units		si
+
+read_data	./Packdata/packdata.txt
+
+neighbor	0.008 bin
+neigh_modify	delay 0
+
+# Material properties required for granular pair styles
+#type1== base sand type2== sand layer type3== wall
+
+fix         m1 all property/global youngsModulus peratomtype 4.6e7 4.6e7 4.6e7
+fix         m2 all property/global poissonsRatio peratomtype 0.167 0.167 0.167
+fix         m3 all property/global coefficientRestitution peratomtypepair 3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3
+fix         m4 all property/global coefficientFriction peratomtypepair 3 0.5 0.5 0.5 0.5 0.75 0.5 0.5 0.5 0.5
+fix         m5 all property/global cohesionEnergyDensity peratomtypepair 3 3.0e6 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+
+# pair style
+pair_style  gran model hertz tangential history cohesion sjkr# Hertzian without cohesion
+pair_coeff  * *
+ 
+# timestep, gravity
+timestep    1e-5
+
+# Groups
+group		sand type 2
+group		bot type 1
+group 		wall type 3
+
+# Walls
+fix             zwall all wall/gran model hertz tangential history primitive type 2 zplane 0.0     
+fix             xwal1 all wall/gran model hertz tangential history primitive type 2 xplane 0.26     
+fix             xwal2 all wall/gran model hertz tangential history primitive type 2 xplane 0.7
+#fix             zwal2 bot wall/gran model hertz tangential history primitive type 2 zplane 0.04348     
+fix             zwal3 sand wall/gran model hertz tangential history primitive type 2 zplane 0.2174     
+fix		fence1 all mesh/surface file cad/fence1.stl type 2
+fix		fence2 all mesh/surface file cad/fence2.stl type 2
+#fix		fence3 all mesh/surface file cad/fence3.stl type 2
+#fix		fence4 all mesh/surface file cad/fence4.stl type 2
+fix		xwal3 all mesh/surface file cad/holder.stl type 2
+fix		holder all wall/gran model hertz tangential history mesh n_meshes 3 meshes xwal3 fence1 fence2 #fence3 fence4
+#fix		xwal4 all wall/gran model hertz tangential history primitive type 2 xplane 0.2591
+
+# Particle templates
+fix             pts1 all particletemplate/sphere 13451 atom_type 2 density constant 2650 radius constant 0.001191
+fix             pts2 all particletemplate/sphere 29411 atom_type 2 density constant 2650 radius constant 0.001588
+fix             pts3 all particletemplate/sphere 29423 atom_type 2 density constant 2650 radius constant 0.001985
+fix             pts4 all particletemplate/sphere 50021 atom_type 2 density constant 2650 radius constant 0.002382
+fix             pts5 all particletemplate/sphere 50023 atom_type 2 density constant 2650 radius constant 0.002779
+fix             pdd1 all particledistribution/discrete 15485867 5 pts1 0.21 pts2 0.17 pts3 0.19 pts4 0.18 pts5 0.25
+fix		pdd2 all particledistribution/discrete 50033 2 pts1 0.5 pts5 0.5
+
+# Regions
+region		lreg block 0.26 0.5217 0. 0.026 0.04348 0.2174
+region		mreg block 0.5217 0.526 0. 0.026 0. 0.02174
+region		rreg block 0.526 0.7 0. 0.026 0.04348 0.2174
+
+fix		gravi bot gravity 225 vector 0. 0. -1.
+
+# insert the base layer 
+fix		ins1 sand insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.285
+
+#fix		ins2 bot insert/pack seed 12007 distributiontemplate pdd2 maxattempt 1000 overlapcheck yes all_in yes insert_every once region mreg volumefraction_region 0.31
+
+fix		ins3 sand insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.285
+
+# apply integrators
+fix		int1 bot nve/sphere
+#fix		int2 wall rigid single
+fix		int3 sand nve/sphere
+fix		int4 all nve/limit absolute 2.e-6
+
+# Define variables
+variable	growts equal "0.5/dt"
+variable	relaxts equal "0.5/dt"
+variable 	dmpst equal "(v_growts+v_relaxts)/100"
+variable	resstep equal "(v_growts+v_relaxts)/20"
+variable	growevery equal 20
+variable	growrate equal "(0.62/0.31)^(20/(3.0*v_growts))"
+
+# Define computes
+compute		cord all contact/atom
+compute		rad sand property/atom radius
+
+# Screen output
+thermo_style	custom step atoms ke cpu
+thermo		1000
+thermo_modify	lost ignore norm no
+
+# Insert particles
+run		1
+dump		dmp1 all custom ${dmpst} post/sandgen/atoms*.txt id x y z radius
+dump		dmp2 all custom ${dmpst} post/sandcoord/coord*.txt c_cord
+dump		dmp3 all custom/vtk ${dmpst} post/sandgen/VTKatoms*.vtk id x y z radius
+
+restart		${resstep} restart/sandgen/res
+unfix		ins1
+#unfix		ins2
+unfix		ins3
+
+#  Grow them
+variable	dgrown atom v_growrate*2.0*c_rad
+fix		grow sand adapt 20 atom diameter v_dgrown
+
+run		${growts} upto
+unfix		grow
+run		${relaxts}
+
+write_data	./Packdata/packdata2.txt

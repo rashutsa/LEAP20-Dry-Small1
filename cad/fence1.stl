@@ -1,0 +1,282 @@
+solid Created by Gmsh
+facet normal 0 0 1
+  outer loop
+    vertex 0.28614 0 0.04348
+    vertex 0.27307 0.013 0.04348
+    vertex 0.26 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.31228 0 0.04348
+    vertex 0.29921 0.013 0.04348
+    vertex 0.28614 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.33842 0 0.04348
+    vertex 0.32535 0.013 0.04348
+    vertex 0.31228 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3907 0 0.04348
+    vertex 0.37763 0.013 0.04348
+    vertex 0.36456 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.41684 0 0.04348
+    vertex 0.40377 0.013 0.04348
+    vertex 0.3907 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.46912 0 0.04348
+    vertex 0.45605 0.013 0.04348
+    vertex 0.44298 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.49526 0 0.04348
+    vertex 0.48219 0.013 0.04348
+    vertex 0.46912 0 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.46912 0.026 0.04348
+    vertex 0.48219 0.013 0.04348
+    vertex 0.49526 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.44298 0.026 0.04348
+    vertex 0.45605 0.013 0.04348
+    vertex 0.46912 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.3907 0.026 0.04348
+    vertex 0.40377 0.013 0.04348
+    vertex 0.41684 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.36456 0.026 0.04348
+    vertex 0.37763 0.013 0.04348
+    vertex 0.3907 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.31228 0.026 0.04348
+    vertex 0.32535 0.013 0.04348
+    vertex 0.33842 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.28614 0.026 0.04348
+    vertex 0.29921 0.013 0.04348
+    vertex 0.31228 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.44298 0 0.04348
+    vertex 0.42991 0.013 0.04348
+    vertex 0.41684 0 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.41684 0.026 0.04348
+    vertex 0.42991 0.013 0.04348
+    vertex 0.44298 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.49526 0.026 0.04348
+    vertex 0.50833 0.013 0.04348
+    vertex 0.5214 0.026 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.26 0.026 0.04348
+    vertex 0.27307 0.013 0.04348
+    vertex 0.28614 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.36456 0 0.04348
+    vertex 0.35149 0.013 0.04348
+    vertex 0.33842 0 0.04348
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.33842 0.026 0.04348
+    vertex 0.35149 0.013 0.04348
+    vertex 0.36456 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5214 0 0.04348
+    vertex 0.50833 0.013 0.04348
+    vertex 0.49526 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.26 0 0.04348
+    vertex 0.27307 0.013 0.04348
+    vertex 0.26 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5214 0.026 0.04348
+    vertex 0.50833 0.013 0.04348
+    vertex 0.5214 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.31228 0.026 0.04348
+    vertex 0.29921 0.013 0.04348
+    vertex 0.31228 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.31228 0 0.04348
+    vertex 0.32535 0.013 0.04348
+    vertex 0.31228 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.33842 0.026 0.04348
+    vertex 0.32535 0.013 0.04348
+    vertex 0.33842 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3907 0 0.04348
+    vertex 0.40377 0.013 0.04348
+    vertex 0.3907 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3907 0.026 0.04348
+    vertex 0.37763 0.013 0.04348
+    vertex 0.3907 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.44298 0 0.04348
+    vertex 0.45605 0.013 0.04348
+    vertex 0.44298 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.46912 0 0.04348
+    vertex 0.48219 0.013 0.04348
+    vertex 0.46912 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.46912 0.026 0.04348
+    vertex 0.45605 0.013 0.04348
+    vertex 0.46912 0 0.04348
+  endloop
+endfacet
+facet normal 0 -0 1
+  outer loop
+    vertex 0.28614 0 0.04348
+    vertex 0.29921 0.013 0.04348
+    vertex 0.28614 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.28614 0.026 0.04348
+    vertex 0.27307 0.013 0.04348
+    vertex 0.28614 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.33842 0 0.04348
+    vertex 0.35149 0.013 0.04348
+    vertex 0.33842 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 -0 1
+  outer loop
+    vertex 0.36456 0 0.04348
+    vertex 0.37763 0.013 0.04348
+    vertex 0.36456 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.36456 0.026 0.04348
+    vertex 0.35149 0.013 0.04348
+    vertex 0.36456 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.41684 0.026 0.04348
+    vertex 0.40377 0.013 0.04348
+    vertex 0.41684 0 0.04348
+  endloop
+endfacet
+facet normal 0 -0 1
+  outer loop
+    vertex 0.41684 0 0.04348
+    vertex 0.42991 0.013 0.04348
+    vertex 0.41684 0.026 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.44298 0.026 0.04348
+    vertex 0.42991 0.013 0.04348
+    vertex 0.44298 0 0.04348
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.49526 0.026 0.04348
+    vertex 0.48219 0.013 0.04348
+    vertex 0.49526 0 0.04348
+  endloop
+endfacet
+facet normal 0 -0 1
+  outer loop
+    vertex 0.49526 0 0.04348
+    vertex 0.50833 0.013 0.04348
+    vertex 0.49526 0.026 0.04348
+  endloop
+endfacet
+endsolid Created by Gmsh
