@@ -1,16 +1,282 @@
 solid Created by Gmsh
 facet normal 0 0 1
   outer loop
+    vertex 0.4800000000000003 0.026 0
+    vertex 0.458 0.013 0
+    vertex 0.4799999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3919999999999997 0 0
+    vertex 0.4139999999999999 0.013 0
+    vertex 0.3920000000000002 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5240000000000002 0.026 0
+    vertex 0.502 0.013 0
+    vertex 0.5239999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5680000000000003 0.026 0
+    vertex 0.546 0.013 0
+    vertex 0.5679999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3480000000000001 0.026 0
+    vertex 0.3259999999999998 0.01299999999999991 0
+    vertex 0.3479999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3920000000000002 0.026 0
+    vertex 0.3699999999999999 0.013 0
+    vertex 0.3919999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
     vertex 0.26 0 0
+    vertex 0.282 0.013 0
+    vertex 0.26 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.7 0.026 0
+    vertex 0.6779999999999999 0.013 0
     vertex 0.7 0 0
-    vertex 0.7 0.043 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.6119999999999999 0 0
+    vertex 0.634 0.01300000000000001 0
+    vertex 0.6120000000000001 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.6120000000000001 0.026 0
+    vertex 0.59 0.013 0
+    vertex 0.6119999999999999 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.304 0.026 0
+    vertex 0.282 0.013 0
+    vertex 0.3039999999999999 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3039999999999999 0 0
+    vertex 0.3259999999999998 0.01299999999999991 0
+    vertex 0.304 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.4799999999999997 0 0
+    vertex 0.502 0.013 0
+    vertex 0.4800000000000003 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.6559999999999999 0 0
+    vertex 0.6779999999999999 0.013 0
+    vertex 0.656 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.656 0.026 0
+    vertex 0.634 0.01300000000000001 0
+    vertex 0.6559999999999999 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3479999999999998 0 0
+    vertex 0.3699999999999999 0.013 0
+    vertex 0.3480000000000001 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.4359999999999997 0 0
+    vertex 0.458 0.013 0
+    vertex 0.4360000000000002 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.4360000000000002 0.026 0
+    vertex 0.4139999999999999 0.013 0
+    vertex 0.4359999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5239999999999998 0 0
+    vertex 0.546 0.013 0
+    vertex 0.5240000000000002 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5679999999999998 0 0
+    vertex 0.59 0.013 0
+    vertex 0.5680000000000003 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3039999999999999 0 0
+    vertex 0.282 0.013 0
+    vertex 0.26 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.7 0 0
+    vertex 0.6779999999999999 0.013 0
+    vertex 0.6559999999999999 0 0
   endloop
 endfacet
 facet normal -0 0 1
   outer loop
-    vertex 0.26 0.043 0
-    vertex 0.26 0 0
-    vertex 0.7 0.043 0
+    vertex 0.656 0.026 0
+    vertex 0.6779999999999999 0.013 0
+    vertex 0.7 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.26 0.026 0
+    vertex 0.282 0.013 0
+    vertex 0.304 0.026 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3479999999999998 0 0
+    vertex 0.3259999999999998 0.01299999999999991 0
+    vertex 0.3039999999999999 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.3919999999999997 0 0
+    vertex 0.3699999999999999 0.013 0
+    vertex 0.3479999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.4359999999999997 0 0
+    vertex 0.4139999999999999 0.013 0
+    vertex 0.3919999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.4799999999999997 0 0
+    vertex 0.458 0.013 0
+    vertex 0.4359999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5239999999999998 0 0
+    vertex 0.502 0.013 0
+    vertex 0.4799999999999997 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.5679999999999998 0 0
+    vertex 0.546 0.013 0
+    vertex 0.5239999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.6119999999999999 0 0
+    vertex 0.59 0.013 0
+    vertex 0.5679999999999998 0 0
+  endloop
+endfacet
+facet normal 0 0 1
+  outer loop
+    vertex 0.6559999999999999 0 0
+    vertex 0.634 0.01300000000000001 0
+    vertex 0.6119999999999999 0 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.6120000000000001 0.026 0
+    vertex 0.634 0.01300000000000001 0
+    vertex 0.656 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.5680000000000003 0.026 0
+    vertex 0.59 0.013 0
+    vertex 0.6120000000000001 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.5240000000000002 0.026 0
+    vertex 0.546 0.013 0
+    vertex 0.5680000000000003 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.4800000000000003 0.026 0
+    vertex 0.502 0.013 0
+    vertex 0.5240000000000002 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.4360000000000002 0.026 0
+    vertex 0.458 0.013 0
+    vertex 0.4800000000000003 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.3920000000000002 0.026 0
+    vertex 0.4139999999999999 0.013 0
+    vertex 0.4360000000000002 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.3480000000000001 0.026 0
+    vertex 0.3699999999999999 0.013 0
+    vertex 0.3920000000000002 0.026 0
+  endloop
+endfacet
+facet normal -0 0 1
+  outer loop
+    vertex 0.304 0.026 0
+    vertex 0.3259999999999998 0.01299999999999991 0
+    vertex 0.3480000000000001 0.026 0
   endloop
 endfacet
 endsolid Created by Gmsh

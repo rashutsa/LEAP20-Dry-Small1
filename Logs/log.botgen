@@ -4,19 +4,19 @@ atom_style	granular
 atom_modify	map array
 communicate	single vel yes
 hard_particles	yes
-#processors	6 1 1
+processors	6 1 1
 
 boundary	f p f
 newton		off
 
 units		si
 
-region		reg block 0.26 0.7 0. 0.043 0. 0.2174 units box
+region		reg block 0.26 0.7 0. 0.026 0. 0.2174 units box
 create_box	3 reg
-Created orthogonal box = (0.26 0 0) to (0.7 0.043 0.2174)
-  1 by 1 by 1 MPI processor grid
+Created orthogonal box = (0.26 0 0) to (0.7 0.026 0.2174)
+  6 by 1 by 1 MPI processor grid
 
-neighbor	0.005 bin
+neighbor	0.015 bin
 neigh_modify	delay 0
 
 # Material properties required for granular pair styles
@@ -71,11 +71,11 @@ region		rreg block 0.526 0.7 0. 0.026 0.04348 0.2174
 fix		gravi bot gravity 225 vector 0. 0. -1.
 
 # insert the base layer
-fix		ins1 bot insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.38
+fix		ins1 bot insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.3
 
 #fix		ins2 bot insert/pack seed 12007 distributiontemplate pdd2 maxattempt 1000 overlapcheck yes all_in yes insert_every once region mreg volumefraction_region 0.31
 
-fix		ins3 bot insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.38
+fix		ins3 bot insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.3
 
 # apply integrators
 fix		int1 bot nve/sphere
@@ -97,5 +97,52 @@ thermo_modify	lost ignore norm no
 
 # Insert particles
 run		1
-Setting up run at Fri Oct  9 06:07:07 2020
+Setting up run at Fri Oct  9 19:14:13 2020
 
+INFO: Particle insertion ins1: inserting every 0 steps
+INFO: Particle insertion ins3: inserting every 0 steps
+Memory usage per processor = 9.20518 Mbytes
+    Step    Atoms         KinEng            CPU       centerOM           mvel 
+       0        0              0              0              0              0 
+INFO: Particle insertion ins1: inserted 9165 particle templates (mass 9.403448e-01) at step 1
+ - a total of 9165 particle templates (mass 9.403448e-01) inserted so far.
+INFO: Particle insertion ins3: inserted 6093 particle templates (mass 6.250381e-01) at step 1
+ - a total of 6093 particle templates (mass 6.250381e-01) inserted so far.
+       1    15258  9.9059386e-07      0.1324766     0.20408296  0.00086393583 
+Loop time of 0.132523 on 6 procs for 1 steps with 15258 atoms, finish time Fri Oct  9 19:14:14 2020
+
+
+Pair  time (%) = 0.00915163 (6.90568)
+Neigh time (%) = 0.0558459 (42.1405)
+Comm  time (%) = 0.0149839 (11.3066)
+Outpt time (%) = 0.00163502 (1.23376)
+Other time (%) = 0.0509068 (38.4135)
+
+Nlocal:    2543 ave 2673 max 2248 min
+Histogram: 1 0 0 0 0 0 1 1 0 3
+Nghost:    7119.67 ave 7933 max 5874 min
+Histogram: 2 0 0 0 0 0 1 0 0 3
+Neighs:    342275 ave 379280 max 279925 min
+Histogram: 1 0 0 1 1 0 0 0 0 3
+
+Total # of neighbors = 2053648
+Ave neighs/atom = 134.595
+Neighbor list builds = 1
+Dangerous builds = 0
+dump		dmp1 all custom ${dmpst} post/basegen/atoms*.txt id x y z radius
+dump		dmp1 all custom 8000 post/basegen/atoms*.txt id x y z radius
+dump		dmp2 all custom ${dmpst} post/basecoord/coord*.txt c_cord
+dump		dmp2 all custom 8000 post/basecoord/coord*.txt c_cord
+restart		${resstep} restart/base/res
+restart		32000 restart/base/res
+unfix		ins1
+#unfix		ins2
+unfix		ins3
+
+
+run		${shakets} upto
+run		1500000 upto
+Setting up run at Fri Oct  9 19:14:14 2020
+
+Memory usage per processor = 23.3104 Mbytes
+    Step    Ato

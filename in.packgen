@@ -8,17 +8,17 @@ atom_style	granular
 atom_modify	map array
 communicate	single vel yes
 hard_particles	yes
-#processors	6 1 1 
+processors	3 1 2 
 
 boundary	f p f
 newton		off
 
 units		si
 
-region		reg block 0.26 0.7 0. 0.043 0. 0.2174 units box
+region		reg block 0.26 0.7 0. 0.026 0. 0.2174 units box
 create_box	3 reg
 
-neighbor	0.005 bin
+neighbor	0.015 bin
 neigh_modify	delay 0
 
 # Material properties required for granular pair styles
@@ -70,11 +70,11 @@ region		rreg block 0.526 0.7 0. 0.026 0.04348 0.2174
 fix		gravi bot gravity 225 vector 0. 0. -1.
 
 # insert the base layer 
-fix		ins1 bot insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.38
+fix		ins1 bot insert/pack seed 999979 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region lreg volumefraction_region 0.3
 
 #fix		ins2 bot insert/pack seed 12007 distributiontemplate pdd2 maxattempt 1000 overlapcheck yes all_in yes insert_every once region mreg volumefraction_region 0.31
 
-fix		ins3 bot insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.38
+fix		ins3 bot insert/pack seed 12011 distributiontemplate pdd1 maxattempt 1000 overlapcheck yes all_in yes insert_every once region rreg volumefraction_region 0.3
 
 # apply integrators
 fix		int1 bot nve/sphere
@@ -110,6 +110,8 @@ unfix		holder
 unfix		zwal3
 fix             zwal1 all wall/gran model hertz tangential history primitive type 2 zplane 0.     
 fix		holder all wall/gran model hertz tangential history mesh n_meshes 1 meshes zwal2
+delete_atoms	region lreg
+delete_atoms	region rreg
 
 run		${relaxts}
 
